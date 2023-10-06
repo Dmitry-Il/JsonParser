@@ -8,7 +8,7 @@ JsonDocument document;
 //здесь указать полный путь к файлу для обработки
 var pathFrom = Path.GetFullPath("D:\\Work\\swagger\\swagger.json");
 //здесь указать полный путь к файлу для создания или сохранения 
-var pathTo = Path.GetFullPath("D:\\Work\\swagger\\swaggerGet.json");
+var pathTo = Path.GetFullPath("D:\\Work\\swagger\\swaggerfsf.json");
 try
 {
 	swaggerJson = File.ReadAllText(pathFrom);
@@ -32,7 +32,7 @@ foreach (var item in myDeserializedPaths)
         necessaryPaths.Add(item.Key,new PathItemObject {
             //тут поменять get на необходимый тип
             //или несколько необходимых типов
-            get = item.Value.get,
+            post = item.Value.get,
             description = item.Value.description,
             head = item.Value.head,
             options = item.Value.options,
@@ -59,13 +59,7 @@ if ((arr as JObject).ContainsKey("paths"))
 
 var end = JsonConvert.SerializeObject(arr);
 
-if (File.Exists(pathTo))
-{
-    File.WriteAllText(pathTo, end);
-}
-else
-{
-    File.Create(pathTo);
-    File.WriteAllText(pathTo, end);
-}
+File.WriteAllText(pathTo, end);
+
+
 
