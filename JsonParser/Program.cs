@@ -5,7 +5,9 @@ using System.Text.Json;
 
 string swaggerJson;
 JsonDocument document;
+//здесь указать полный путь к файлу для обработки
 var pathFrom = Path.GetFullPath("D:\\Work\\swagger\\swagger.json");
+//здесь указать полный путь к файлу для создания или сохранения 
 var pathTo = Path.GetFullPath("D:\\Work\\swagger\\swaggerGet.json");
 try
 {
@@ -24,9 +26,12 @@ var myDeserializedPaths = JsonConvert.DeserializeObject<Dictionary<string,PathIt
 Dictionary<string, PathItemObject> necessaryPaths = new();
 foreach (var item in myDeserializedPaths)
 {
+    //тут можно поменять get на необходимый тип запроса
     if (item.Value.get is not null)
     {
         necessaryPaths.Add(item.Key,new PathItemObject {
+            //тут поменять get на необходимый тип
+            //или несколько необходимых типов
             get = item.Value.get,
             description = item.Value.description,
             head = item.Value.head,
