@@ -32,7 +32,7 @@ foreach (var item in myDeserializedPaths)
         necessaryPaths.Add(item.Key,new PathItemObject {
             //тут поменять get на необходимый тип
             //или несколько необходимых типов
-            post = item.Value.get,
+            get = item.Value.get,
             description = item.Value.description,
             head = item.Value.head,
             options = item.Value.options,
